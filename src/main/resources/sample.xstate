@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<state_machine_diagram>
+ <name>StateMachineDiagram</name>
+ <description/>
+ <state_machines>
+  <state_machine height="600" width="1200">
+   <name>DB Health Lifecycle</name>
+   <description/>
+   <states>
+    <state id="Normal" x_loc="229" y_loc="158">
+     <description/>
+     <reference/>
+     <entry_action>com.livedrof.xstate.action.TestEnterAction</entry_action>
+     <exit_action>com.livedrof.xstate.action.TestAction</exit_action>
+    </state>
+    <state id="OutOfService" x_loc="411" y_loc="381">
+     <description/>
+     <reference/>
+     <entry_action>com.livedrof.xstate.action.TestEnterAction</entry_action>
+     <exit_action>com.livedrof.xstate.action.TestAction</exit_action>
+    </state>
+    <start id="start" x_loc="57" y_loc="173">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </start>
+    <end id="end" x_loc="630" y_loc="174">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </end>
+   </states>
+   <events>
+    <event id="initialize"/>
+    <event id="shutdown"/>
+    <event id="markdown"/>
+    <event id="markup"/>
+   </events>
+   <transitions>
+    <transition event_id="markdown" source_id="Normal" style="heightFirst" target_id="OutOfService" transit_action=""/>
+    <transition event_id="shutdown" source_id="Normal" style="direct" target_id="end" transit_action=""/>
+    <transition event_id="shutdown" source_id="OutOfService" style="widthFirst" target_id="end" transit_action=""/>
+    <transition event_id="markup" source_id="OutOfService" style="direct" target_id="Normal" transit_action=""/>
+    <transition event_id="initialize" source_id="start" style="direct" target_id="Normal" transit_action=""/>
+   </transitions>
+  </state_machine>
+  <state_machine height="300" width="1200">
+   <name>vip flow</name>
+   <description/>
+   <states>
+    <start id="start" x_loc="53" y_loc="85">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </start>
+    <state id="validate" x_loc="138" y_loc="182">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </state>
+    <state id="gether user info" x_loc="279" y_loc="55">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </state>
+    <state id="data maintain" x_loc="429" y_loc="199">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </state>
+    <state id="transfer" x_loc="525" y_loc="61">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </state>
+    <end id="end" x_loc="649" y_loc="223">
+     <description/>
+     <reference/>
+     <entry_action/>
+     <exit_action/>
+    </end>
+   </states>
+   <events>
+    <event id="pass"/>
+   </events>
+   <transitions>
+    <transition event_id="pass" source_id="start" style="direct" target_id="validate" transit_action=""/>
+    <transition event_id="pass" source_id="validate" style="direct" target_id="gether user info" transit_action=""/>
+    <transition event_id="pass" source_id="gether user info" style="direct" target_id="data maintain" transit_action=""/>
+    <transition event_id="pass" source_id="data maintain" style="direct" target_id="transfer" transit_action=""/>
+    <transition event_id="pass" source_id="transfer" style="direct" target_id="end" transit_action=""/>
+   </transitions>
+  </state_machine>
+ </state_machines>
+</state_machine_diagram>
